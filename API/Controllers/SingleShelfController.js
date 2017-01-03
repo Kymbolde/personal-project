@@ -12,11 +12,15 @@ module.exports.getSingleShelf = function(req, res) {
 	// 	userID: '62731027',
  //        shelf: 'read',
  //        page: 1,
- //        per_page: 10
+ //        per_page: 20
  //    }
  	var shelfOptions = req.body
+ 	console.log(shelfOptions)
 	gr.getSingleShelf(shelfOptions, function(json) {
-		var data = singleShelfService.getData(json)
+		var data = {
+			shelfData: singleShelfService.getData(json),
+			userData: req.user
+		}
 		res.json(data);
 	})
 }

@@ -5,11 +5,13 @@
 	<title>Game</title>
 
 </head>
-<body ng-controller="homeCtrl">
+<body ng-controller="mainCtrl">
 
 
 
 <input type="text" ng-model="keyword" placeholder="search"></input>
+<button type="submit" ng-click="userSubmit(keyword)">login</button>
+<button type="submit" ng-click="searchSubmit(keyword)">search</button>
 
 
 
@@ -37,6 +39,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.js"></script>
 <script src="./app.js"></script>
+<script src="./mainController.js"></script>
+<script src="./mainService.js"></script>
 
 
 

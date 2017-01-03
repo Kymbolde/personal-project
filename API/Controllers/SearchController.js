@@ -8,7 +8,8 @@ module.exports.searchBooks = function(req, res) {
 		'key': config.key,
 		'secret': config.secret 
 	});
-    gr.searchBooks('stormlight', function(json) {
+	var keyword = req.params.keyword;
+    gr.searchBooks(keyword, function(json) {
     	var data = searchService.getData(json)
 		res.json(data);
 	});  

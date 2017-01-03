@@ -10,13 +10,14 @@ var searchController = require('./API/Controllers/SearchController');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(express.static(__dirname))
 
 var port = process.env.PORT || 3000;
 
 var router = express.Router();
 
 
-router.get('/showUser/:user', userController.showUser);
+router.get('/showUser/:user', userController.showUser, singleShelfController.getSingleShelf);
 
 router.post('/getShelf', singleShelfController.getSingleShelf);
 
