@@ -14,4 +14,28 @@ angular.module('bookApp').service('mainServ', function($http) {
 		})
 	}
 
+	this.setFav = function(values) {
+		return $http({
+			method: 'POST',
+			url: '/api/favorites/',
+			data: values
+		})
+	}
+
+	this.changeFav = function(values) {
+		return $http({
+			method: 'PUT',
+			url: '/api/favorites/' + values.id,
+			data: values
+		})
+	}
+
+	this.deleteFav = function(values) {
+		return $http({
+			method: 'DELETE',
+			url: '/api/favorites/' + values.id,
+			data: values
+		})
+	}
+
 })

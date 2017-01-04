@@ -1,0 +1,19 @@
+body {
+	background: url(http://wallpaperus.org/wallpapers/07/64/leather-textures-1920x1080-wallpaper-2161323.jpg);
+}
+
+.search-results {
+	color: white;
+}
+
+button {
+	background-color: #264C72;
+	color: white;
+	border-radius: 10px;
+	border-color: #264C72;
+	border-style: solid;
+}
+
+input {
+
+}

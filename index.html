@@ -2,7 +2,8 @@
 <html ng-app="bookApp">
 <head>
 	<meta charset="utf-8">
-	<title>Game</title>
+	<title>Better Reads</title>
+	<link rel="stylesheet" type="text/css" href="./styles/mainStyle.css">
 
 </head>
 <body ng-controller="mainCtrl">
@@ -12,11 +13,20 @@
 <input type="text" ng-model="keyword" placeholder="search"></input>
 <button type="submit" ng-click="userSubmit(keyword)">login</button>
 <button type="submit" ng-click="searchSubmit(keyword)">search</button>
+<input type="text" ng-model="values.id" placeholder="id"></input>
+<input type="text" ng-model="values.title" placeholder="title"></input>
+<!-- <input type="text" ng-model="values.author" placeholder="author"></input>
+<input type="text" ng-model="values.image" placeholder="image"></input>
+<input type="text" ng-model="values.average_rating" placeholder="average_rating"></input>
+<input type="text" ng-model="values.rating_count" placeholder="rating_count"></input>
+<button type="submit" ng-click="favSubmit(values)">add fav</button> -->
+<button type="submit" ng-click="changeFav(values)">change name</button>
+<button type="submit" ng-click="deleteFav(values)">delete fav</button>
 
-
-
-
-
+<div ng-repeat="book in bookData" class="search-results">
+	<p>{{book.title}}</p>
+	<button type="submit" ng-click="favSubmit($index)">add fav</button>
+</div>
 
 
 
