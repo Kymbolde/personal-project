@@ -3,10 +3,6 @@ body {
 	color: white;
 }
 
-.search-results {
-	color: white;
-}
-
 button {
 	background-color: #264C72;
 	color: white;
@@ -34,4 +30,17 @@ input {
 
 .search-results {
 	margin: 10px
+}
+
+.barChart {
+	height: 500px;
+	width: 500px;
+	background: white;
+}
+
+.bar {
+	fill: lightblue;
+}
+.axis--x path {
+  display: none;
 }

@@ -2,7 +2,9 @@ angular.module('bookApp').controller('mainCtrl', function($scope, mainServ, $win
 
 	$scope.userSubmit = function(keyword) {
 		mainServ.setUser(keyword).then(function(res) {
-			console.log(res);
+			console.log(res.data.shelfData);
+			$scope.shelfData = res.data.shelfData
+			$scope.userData = res.data.userData
 		})
 	}
 
@@ -15,7 +17,7 @@ angular.module('bookApp').controller('mainCtrl', function($scope, mainServ, $win
 
 	$scope.favSubmit = function(values) {
 		console.log(values);
-		mainServ.setFav($scope.bookData[values]).then(function(res) {
+		mainServ.setFav($scope.shelfData[values]).then(function(res) {
 			console.log(res);
 		})
 	}
@@ -30,8 +32,47 @@ angular.module('bookApp').controller('mainCtrl', function($scope, mainServ, $win
 		mainServ.deleteFav(values).then(function(res) {
 			console.log(res);
 		})
-	}	
+	}
 
+	$scope.getData = function(bool) {
+		if(bool) {
+			$scope.data = firstData;
+		} else {
+			$scope.data = secondData;
+		}
 
+	}
+
+	var firstData = [
+		{
+			label: 'read',
+			value: 15
+		},{
+			label: 'reading',
+			value: 34
+		},{
+			label: 'to read',
+			value: 12
+		}, {
+			label: 'favorites',
+			value: 52
+		}
+	];
+
+	var secondData = [
+		{
+			label: 'read',
+			value: 32
+		},{
+			label: 'reading',
+			value: 21
+		},{
+			label: 'to read',
+			value: 10
+		}, {
+			label: 'favorites',
+			value: 2
+		}
+	];
 
 })

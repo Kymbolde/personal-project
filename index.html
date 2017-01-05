@@ -4,8 +4,7 @@
 	<meta charset="utf-8">
 	<title>Better Reads</title>
 	<link rel="stylesheet" type="text/css" href="./styles/mainStyle.css">
-	<link rel="stylesheet" type="text/css" href="./node_modules/slick-carousel/slick/slick.css"/>
-	<link rel="stylesheet" type="text/css" href="./node_modules/slick-carousel/slick/slick-theme.css"/>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
 
 </head>
@@ -26,12 +25,41 @@
 <button type="submit" ng-click="changeFav(values)">change name</button>
 <button type="submit" ng-click="deleteFav(values)">delete fav</button>
 
+
+<button class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button>
+
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      Some data here
+      .
+      .
+      .
+      more data
+    </div>
+  </div>
+</div>
+
+
+<button ng-click="getData(toggle = !toggle)">Toggle</button>
+<div class="barChart">
+	<bar-chart data="data"></bar-chart>
+</div>
+
+
+mess/optimize bar graph
+set up modal for user login
+add search scroll to right side of view (same as shelf view on bottom)
+make sure i have valid foreign key...
+
+
+<!-- bookshelf container -->
 <div class="results-container">
-	<div ng-repeat="book in bookData" class="search-results">
+	<div ng-repeat="data in shelfData" class="search-results">
 		<button type="submit" ng-click="favSubmit($index)">add fav</button>
-		<img ng-src="{{book.image_url}}"/>
-		<p>{{book.title}}</p>
-		<p>{{book.author}}</p>
+		<img ng-src="{{data.image_url}}"/>
+		<p>{{data.title}}</p>
 		
 	</div>
 </div>
@@ -48,16 +76,17 @@
 
 
 
+
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.js"></script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.js"></script>
 <script src="./app.js"></script>
 <script src="./mainController.js"></script>
 <script src="./mainService.js"></script>
-<script src="./node_modules/slick-carousel/slick/slick.min.js"></script>
+<script src="./public/Directives/barChart.js"></script>
+
 
 
 
