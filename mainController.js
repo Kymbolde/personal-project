@@ -1,4 +1,4 @@
-angular.module('bookApp').controller('mainCtrl', function($scope, mainServ) {
+angular.module('bookApp').controller('mainCtrl', function($scope, mainServ, $window) {
 
 	$scope.userSubmit = function(keyword) {
 		mainServ.setUser(keyword).then(function(res) {

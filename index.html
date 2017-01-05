@@ -4,6 +4,9 @@
 	<meta charset="utf-8">
 	<title>Better Reads</title>
 	<link rel="stylesheet" type="text/css" href="./styles/mainStyle.css">
+	<link rel="stylesheet" type="text/css" href="./node_modules/slick-carousel/slick/slick.css"/>
+	<link rel="stylesheet" type="text/css" href="./node_modules/slick-carousel/slick/slick-theme.css"/>
+
 
 </head>
 <body ng-controller="mainCtrl">
@@ -23,16 +26,15 @@
 <button type="submit" ng-click="changeFav(values)">change name</button>
 <button type="submit" ng-click="deleteFav(values)">delete fav</button>
 
-<div ng-repeat="book in bookData" class="search-results">
-	<p>{{book.title}}</p>
-	<button type="submit" ng-click="favSubmit($index)">add fav</button>
+<div class="results-container">
+	<div ng-repeat="book in bookData" class="search-results">
+		<button type="submit" ng-click="favSubmit($index)">add fav</button>
+		<img ng-src="{{book.image_url}}"/>
+		<p>{{book.title}}</p>
+		<p>{{book.author}}</p>
+		
+	</div>
 </div>
-
-
-
-
-
-
 
 
 
@@ -48,9 +50,14 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
 <script src="./app.js"></script>
 <script src="./mainController.js"></script>
 <script src="./mainService.js"></script>
+<script src="./node_modules/slick-carousel/slick/slick.min.js"></script>
 
 
 

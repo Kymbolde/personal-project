@@ -1,5 +1,6 @@
 body {
 	background: url(http://wallpaperus.org/wallpapers/07/64/leather-textures-1920x1080-wallpaper-2161323.jpg);
+	color: white;
 }
 
 .search-results {
@@ -16,4 +17,21 @@ button {
 
 input {
 
+}
+
+.results-container {
+	height: 300px;
+	width: 75vw;
+	position : absolute;
+    bottom : 0;
+	float: left;
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	overflow: scroll;
+	margin-bottom: 110px;
+}
+
+.search-results {
+	margin: 10px
 }
