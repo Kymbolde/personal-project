@@ -16,8 +16,8 @@
                 });
 
                 var margin = { top: 20, right: 20, bottom: 30, left: 20 },
-                    width = 500 - margin.left - margin.right,
-                    height = 500 - margin.top - margin.bottom;
+                    width = 350 - margin.left - margin.right,
+                    height = 330 - margin.top - margin.bottom;
 
                 var x = d3.scale.ordinal()
                     .rangeRoundBands([0, width], .2);
@@ -37,7 +37,7 @@
                     .attr("class", "axis axis--x")
                     .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
                 
-                var hardTextWidth = [57, 170, 277, 389]
+                var hardTextWidth = [35, 113, 182, 258]
                 function updateChart() {
                     var data = scope.data;
                     // console.log('data in directive', data);

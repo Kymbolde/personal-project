@@ -18,14 +18,25 @@ button {
 	border-color: #264C72;
 	border-style: solid;
 	margin-left: 10px;
+	margin-top: 10px;
 }
 
 #leftChartButton {
+	width: 50px;
 	margin-left: 38px;
 }
 
+#chartButton3 {
+	margin-left: 1px;
+}
+
+#chartButton4 {
+	margin-left: 1px;
+}
+
 .chartButtons {
-	margin-left: 7px;
+	margin-left: 10px;
+	width: 70px;
 }
 
 input {
@@ -60,8 +71,8 @@ text-align: center;
 	flex-direction: row;
 	align-items: flex-start;
 	overflow: scroll;
-	margin-bottom: 110px;
-}
+/*	margin-bottom: 110px;
+*/}
 
 .results-container {
 	height: 85vh;
@@ -74,8 +85,8 @@ text-align: center;
 	flex-direction: column;
 	align-items: flex-start;
 	overflow: scroll;
-	margin-bottom: 110px;
-}
+/*	margin-bottom: 110px;
+*/}
 
 .search-results {
 	margin: 10px;
@@ -99,8 +110,8 @@ text-align: center;
 }
 
 .barChart {
-	height: 500px;
-	width: 500px;
+	height: 330px;
+	width: 350px;
 }
 
 .bar {

@@ -1,5 +1,12 @@
 angular.module('bookApp').service('mainServ', function($http) {
 	
+	this.getFavorites = function() {
+		return $http({
+			method: 'GET',
+			url: '/api/favorites'
+		})
+	}
+
 	this.setUser = function(keyword, index) {
 		return $http({
 			method: 'GET',

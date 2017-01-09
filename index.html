@@ -2,7 +2,8 @@
 <html ng-app="bookApp">
 <head>
 	<meta charset="utf-8">
-	<title>Better Reads</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Simple Reads</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="./styles/mainStyle.css">
 
@@ -37,21 +38,21 @@
       .
       .
       <input type="text" ng-model="username" placeholder="username"></input>
-      <button type="submit" ng-click="userSubmit(username, 0); getData(toggle = !toggle)" data-toggle="modal" data-target=".bd-example-modal-lg">Login</button>
+      <button type="submit" ng-click="userSubmit(username, 0); getData(toggle = !toggle); getFavorites()" data-toggle="modal" data-target=".bd-example-modal-lg">Login</button>
     </div>
   </div>
 </div>
 
 
-<button ng-click="getData(toggle = !toggle)">Toggle</button>
+<!-- <button ng-click="getData(toggle = !toggle)">Toggle</button> -->
 <div class="barChart">
 	<bar-chart data="data" id="barChart"></bar-chart>
 </div>
 
 <button type="submit" ng-click="userSubmit(username, 0)" id="leftChartButton">Read</button>
 <button type="submit" ng-click="userSubmit(username, 1)" class="chartButtons">Reading</button>
-<button type="submit" ng-click="userSubmit(username, 2)" class="chartButtons">To-Read</button>
-<button type="submit" ng-click="userSubmit(username, 0)" class="chartButtons">Favorites</button>
+<button type="submit" ng-click="userSubmit(username, 2)" class="chartButtons" id="chartButton3">To-Read</button>
+<button type="submit" ng-click="getFavorites()" class="chartButtons" id="chartButton4">Favorites</button>
 
 <!--add shelf change buttons to chart<br>
 polish modal<br>
@@ -63,7 +64,7 @@ tie shelf change buttons to chart refresh(and find better way to trigger than a 
 <div class="bookshelf-container">
 	<div ng-repeat="data in shelfData" class="search-results">
 
-		<button type="submit" ng-click="favSubmit($index)">add fav</button>
+		<button type="submit" ng-click="favSubmit($index); getData(toggle = !toggle)" >add fav</button>
 
 		<img ng-src="{{data.image_url}}"/>
 
@@ -89,7 +90,7 @@ tie shelf change buttons to chart refresh(and find better way to trigger than a 
 		</div>	
 
 		<div class="search-results-button">
-			<button type="submit" ng-click="favSubmit($index)">add fav</button>
+			<!-- <button type="submit" ng-click="favSubmit($index)">add fav</button> -->
 		</div>	
 	</div>
 </div>

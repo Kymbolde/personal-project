@@ -28,7 +28,7 @@ module.exports = {
 
 	createFavorite: function(req, res, next) {
 		console.log('Create Working');
-		db.run("insert into favorites (isbn, title, author, image, average_rating, rating_count) values ($1, $2, $3, $4, $5, $6)",
+		db.run("insert into favorites (isbn, title, author, image_url, average_rating, rating_count) values ($1, $2, $3, $4, $5, $6)",
 		 [req.body.isbn, req.body.title, req.body.author, req.body.image_url, req.body.average_rating, req.body.ratings_count],
 		  function(err, favorites) {
 			if (err) {

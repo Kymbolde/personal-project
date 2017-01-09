@@ -1,5 +1,13 @@
 angular.module('bookApp').controller('mainCtrl', function($scope, mainServ, $timeout) {
 
+	$scope.getFavorites = function() {
+		mainServ.getFavorites().then(function(res) {
+			console.log("favorites", res.data);
+			$scope.favorites = res.data
+			$scope.shelfData = res.data
+		})
+	}
+
 	$scope.userSubmit = function(keyword, index) {
 		mainServ.setUser(keyword, index).then(function(res) {
 			console.log("shelf/user data", res.data);
@@ -18,7 +26,7 @@ angular.module('bookApp').controller('mainCtrl', function($scope, mainServ, $tim
 			value: $scope.userData[3].shelfBooks
 		}, {
 			label: 'favorites',
-			value: 5
+			value: $scope.favorites.length
 		}
 	];
 		})
@@ -35,6 +43,22 @@ angular.module('bookApp').controller('mainCtrl', function($scope, mainServ, $tim
 		console.log("favSubmit values", values);
 		mainServ.setFav($scope.shelfData[values]).then(function(res) {
 			console.log(res);
+
+			firstData = [
+		{
+			label: $scope.userData[1].shelfName,
+			value: $scope.userData[1].shelfBooks
+		},{
+			label: "reading",
+			value: $scope.userData[2].shelfBooks
+		},{
+			label: $scope.userData[3].shelfName,
+			value: $scope.userData[3].shelfBooks
+		}, {
+			label: 'favorites',
+			value: firstData[3].value + 1
+		}
+	];
 		})
 	}
 
@@ -56,7 +80,7 @@ angular.module('bookApp').controller('mainCtrl', function($scope, mainServ, $tim
 
 		$timeout(function() {
         	$scope.data = firstData;
-    	}, 2500);
+    	}, 3000);
 		// if(bool) {
 		// 	$scope.data = firstData;
 		// } else {
