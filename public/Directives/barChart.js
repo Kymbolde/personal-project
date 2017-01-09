@@ -9,7 +9,7 @@
             link: function(scope, elem, attrs) {
 
                 scope.$watch("data", function(n, o) {
-                    console.log('data fired', n)
+                    console.log('data fired')
                     if (o !== n) {
                         updateChart();
                     }
@@ -37,10 +37,10 @@
                     .attr("class", "axis axis--x")
                     .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
                 
-                var hardTextWidth = [60, 190, 335]
+                var hardTextWidth = [57, 170, 277, 389]
                 function updateChart() {
                     var data = scope.data;
-                    console.log('data in directive', data);
+                    // console.log('data in directive', data);
                     if (data) {
                       x.domain(data.map(function(d) { return d.label; }));
                       y.domain([0, d3.max(data, function(d) { return d.value; })]);
@@ -64,12 +64,12 @@
                       svg.selectAll("text")
                           .data(data)
                         .enter().append("text")
-                         .text(function(d) { return d.label + " (" + d.value + ")" })
-                         .attr("x", function(d, i) {return i * (width/data.length) + x.rangeBand() / 2; })
+                         .text(function(d) { return d.value})
+                         .attr("x", function(d, i) {return hardTextWidth[i]})
                          .attr("y", function(d) { return height + 20; })
                          .attr("font-family", "sans-serif") 
                          .attr("font-size", "14px")
-                         .attr("color", "black")
+                         .attr("fill", "white")
 
 
                       rect.exit().transition().style({opacity: 0}).remove()

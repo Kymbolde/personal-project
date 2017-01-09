@@ -28,8 +28,8 @@ module.exports = {
 
 	createFavorite: function(req, res, next) {
 		console.log('Create Working');
-		db.run("insert into favorites (title, author, image, average_rating, rating_count) values ($1, $2, $3, $4, $5)",
-		 [req.body.title, req.body.author, req.body.image_url, req.body.average_rating, req.body.ratings_count],
+		db.run("insert into favorites (isbn, title, author, image, average_rating, rating_count) values ($1, $2, $3, $4, $5, $6)",
+		 [req.body.isbn, req.body.title, req.body.author, req.body.image_url, req.body.average_rating, req.body.ratings_count],
 		  function(err, favorites) {
 			if (err) {
 				console.log(err);
@@ -42,7 +42,7 @@ module.exports = {
 
 	updateFavorite: function(req, res, next) {
 		console.log('Update Working');
-		db.run('update favorites set title = $1 where id = $2', [req.body.title, req.body.id], function(err, favorites) {
+		db.run('update favorites set title = $1 where isbn = $2', [req.body.title, req.body.isbn], function(err, favorites) {
 			if (err) {
 				console.log(err);
 				return res.status(500).send(err);
@@ -54,7 +54,7 @@ module.exports = {
 
 	removeFavorite: function(req, res, next) {
 		console.log('Remove Working');
-		db.run('delete from favorites where id = $1', [req.params.id], function(err, favorites) {
+		db.run('delete from favorites where isbn = $1', [req.params.isbn], function(err, favorites) {
 			if (err) {
 				console.log(err);
 				return res.status(500).send(err);

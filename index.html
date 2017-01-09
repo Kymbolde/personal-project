@@ -3,30 +3,30 @@
 <head>
 	<meta charset="utf-8">
 	<title>Better Reads</title>
-	<link rel="stylesheet" type="text/css" href="./styles/mainStyle.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="./styles/mainStyle.css">
 
 
 </head>
 <body ng-controller="mainCtrl">
 
 
+<button type="submit" ng-click="searchSubmit(keyword)" id="searchButton">search</button>
+<input type="text" ng-model="keyword" placeholder="search" id="searchBox"></input>
+<!-- <button type="submit" ng-click="userSubmit(keyword)">login</button> -->
 
-<input type="text" ng-model="keyword" placeholder="search"></input>
-<button type="submit" ng-click="userSubmit(keyword)">login</button>
-<button type="submit" ng-click="searchSubmit(keyword)">search</button>
-<input type="text" ng-model="values.id" placeholder="id"></input>
-<input type="text" ng-model="values.title" placeholder="title"></input>
+<!-- <input type="text" ng-model="values.id" placeholder="id"></input>
+<input type="text" ng-model="values.title" placeholder="title"></input> -->
 <!-- <input type="text" ng-model="values.author" placeholder="author"></input>
 <input type="text" ng-model="values.image" placeholder="image"></input>
 <input type="text" ng-model="values.average_rating" placeholder="average_rating"></input>
 <input type="text" ng-model="values.rating_count" placeholder="rating_count"></input>
 <button type="submit" ng-click="favSubmit(values)">add fav</button> -->
-<button type="submit" ng-click="changeFav(values)">change name</button>
-<button type="submit" ng-click="deleteFav(values)">delete fav</button>
+<!-- <button type="submit" ng-click="changeFav(values)">change name</button>
+<button type="submit" ng-click="deleteFav(values)">delete fav</button> -->
 
 
-<button class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button>
+<button class="btn btn-primary" id="modalButton" data-toggle="modal" data-target=".bd-example-modal-lg">Login</button>
 
 
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -36,7 +36,8 @@
       .
       .
       .
-      more data
+      <input type="text" ng-model="username" placeholder="username"></input>
+      <button type="submit" ng-click="userSubmit(username, 0); getData(toggle = !toggle)" data-toggle="modal" data-target=".bd-example-modal-lg">Login</button>
     </div>
   </div>
 </div>
@@ -44,29 +45,54 @@
 
 <button ng-click="getData(toggle = !toggle)">Toggle</button>
 <div class="barChart">
-	<bar-chart data="data"></bar-chart>
+	<bar-chart data="data" id="barChart"></bar-chart>
 </div>
 
+<button type="submit" ng-click="userSubmit(username, 0)" id="leftChartButton">Read</button>
+<button type="submit" ng-click="userSubmit(username, 1)" class="chartButtons">Reading</button>
+<button type="submit" ng-click="userSubmit(username, 2)" class="chartButtons">To-Read</button>
+<button type="submit" ng-click="userSubmit(username, 0)" class="chartButtons">Favorites</button>
 
-mess/optimize bar graph
-set up modal for user login
-add search scroll to right side of view (same as shelf view on bottom)
-make sure i have valid foreign key...
-
+<!--add shelf change buttons to chart<br>
+polish modal<br>
+figure out whether search will have fav or not(cant pull isbn from search)<br>
+tie shelf change buttons to chart refresh(and find better way to trigger than a timeout if there is time)
+ -->
 
 <!-- bookshelf container -->
-<div class="results-container">
+<div class="bookshelf-container">
 	<div ng-repeat="data in shelfData" class="search-results">
+
 		<button type="submit" ng-click="favSubmit($index)">add fav</button>
+
 		<img ng-src="{{data.image_url}}"/>
+
 		<p>{{data.title}}</p>
+		<p>{{data.author}}</p>
 		
 	</div>
 </div>
 
 
+<!-- search container -->
+<div class="results-container">
+	<div ng-repeat="data in searchData" class="search-results">
+		<div class="search-results-items">
+			
+			<img ng-src="{{data.image_url}}"/>
+			
+			<div class="search-results-data">
+				<p>{{data.title}}</p>
+				<p>{{data.author}}</p>
+			</div>
 
+		</div>	
 
+		<div class="search-results-button">
+			<button type="submit" ng-click="favSubmit($index)">add fav</button>
+		</div>	
+	</div>
+</div>
 
 
 

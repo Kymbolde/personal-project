@@ -15,8 +15,11 @@ module.exports.getSingleShelf = function(req, res) {
  //        per_page: 20
  //    }
  	var shelfOptions = req.body
- 	console.log(shelfOptions)
-	gr.getSingleShelf(shelfOptions, function(json) {
+ 	// console.log("this one shouldnt be broken", shelfOptions)
+ 	console.log(shelfOptions[req.params.index])
+ 	console.log(req.params.index)
+	gr.getSingleShelf(shelfOptions[req.params.index], function(json) {
+		// console.log("everything is here", shelfOptions, json, shelfOptions[req.params.index])
 		var data = {
 			shelfData: singleShelfService.getData(json),
 			userData: req.user

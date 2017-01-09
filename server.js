@@ -20,13 +20,16 @@ var massiveServer = massive.connectSync({
 app.set('db', massiveServer);
 var db = app.get('db');
 
+var dbSetup = require('./dbSetup');
+dbSetup.run();
+
 var queries = require('./queries.js');
 
 
 var port = process.env.PORT || 3000;
 
 //API endpoints
-app.get('/api/showUser/:user', userController.showUser, singleShelfController.getSingleShelf);
+app.get('/api/showUser/:user/:index', userController.showUser, singleShelfController.getSingleShelf);
 app.post('/api/getShelf', singleShelfController.getSingleShelf);
 app.get('/api/getShelves/:user', shelfController.getShelves);
 app.get('/api/search/:keyword', searchController.searchBooks);

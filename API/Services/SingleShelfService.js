@@ -2,6 +2,7 @@
 
 
 module.exports.getData = function(json) {
+	// console.log("HEY LISTEN!!!", json.GoodreadsResponse.books[0].book)
 	var pathing = json.GoodreadsResponse.books[0].book
 	var books = []
 	for (var i = 0; i < pathing.length; i++) {

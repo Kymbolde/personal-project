@@ -4,7 +4,6 @@
 module.exports.getData = function(json) {
 
 	var pathing = json.GoodreadsResponse.search[0].results[0].work
-	console.log(pathing)
 	var books = []
 	for (var i = 0; i < pathing.length; i++) {
 		var bookInfo = {}
@@ -16,7 +15,7 @@ module.exports.getData = function(json) {
 		if (pathing[i].id[0]) bookInfo.ratings_count = pathing[i].ratings_count[0]._;
 		books.push(bookInfo)
 	}
-	console.log(books)
+	console.log("Searching")
 	return books
 
 }

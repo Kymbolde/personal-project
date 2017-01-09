@@ -1,22 +1,38 @@
-angular.module('bookApp').controller('mainCtrl', function($scope, mainServ, $window) {
+angular.module('bookApp').controller('mainCtrl', function($scope, mainServ, $timeout) {
 
-	$scope.userSubmit = function(keyword) {
-		mainServ.setUser(keyword).then(function(res) {
-			console.log(res.data.shelfData);
+	$scope.userSubmit = function(keyword, index) {
+		mainServ.setUser(keyword, index).then(function(res) {
+			console.log("shelf/user data", res.data);
 			$scope.shelfData = res.data.shelfData
 			$scope.userData = res.data.userData
+
+			firstData = [
+		{
+			label: $scope.userData[1].shelfName,
+			value: $scope.userData[1].shelfBooks
+		},{
+			label: "reading",
+			value: $scope.userData[2].shelfBooks
+		},{
+			label: $scope.userData[3].shelfName,
+			value: $scope.userData[3].shelfBooks
+		}, {
+			label: 'favorites',
+			value: 5
+		}
+	];
 		})
 	}
 
 	$scope.searchSubmit = function(keyword) {
 		mainServ.setSearch(keyword).then(function(res) {
-			console.log(res.data);
-			$scope.bookData = res.data
+			console.log("search data", res);
+			$scope.searchData = res.data
 		})
 	}
 
 	$scope.favSubmit = function(values) {
-		console.log(values);
+		console.log("favSubmit values", values);
 		mainServ.setFav($scope.shelfData[values]).then(function(res) {
 			console.log(res);
 		})
@@ -34,45 +50,29 @@ angular.module('bookApp').controller('mainCtrl', function($scope, mainServ, $win
 		})
 	}
 
+	var firstData = []
+
 	$scope.getData = function(bool) {
-		if(bool) {
-			$scope.data = firstData;
-		} else {
-			$scope.data = secondData;
-		}
+
+		$timeout(function() {
+        	$scope.data = firstData;
+    	}, 2500);
+		// if(bool) {
+		// 	$scope.data = firstData;
+		// } else {
+		// 	$scope.data = firstData;
+		// }
 
 	}
 
-	var firstData = [
-		{
-			label: 'read',
-			value: 15
-		},{
-			label: 'reading',
-			value: 34
-		},{
-			label: 'to read',
-			value: 12
-		}, {
-			label: 'favorites',
-			value: 52
-		}
-	];
-
-	var secondData = [
-		{
-			label: 'read',
-			value: 32
-		},{
-			label: 'reading',
-			value: 21
-		},{
-			label: 'to read',
-			value: 10
-		}, {
-			label: 'favorites',
-			value: 2
-		}
-	];
-
 })
+
+
+
+
+
+
+
+
+
+

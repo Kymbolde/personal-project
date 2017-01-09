@@ -1,9 +1,9 @@
 angular.module('bookApp').service('mainServ', function($http) {
 	
-	this.setUser = function(keyword) {
+	this.setUser = function(keyword, index) {
 		return $http({
 			method: 'GET',
-			url: '/api/showUser/' + keyword
+			url: '/api/showUser/' + keyword + '/' + index
 		})
 	}
 
@@ -25,7 +25,7 @@ angular.module('bookApp').service('mainServ', function($http) {
 	this.changeFav = function(values) {
 		return $http({
 			method: 'PUT',
-			url: '/api/favorites/' + values.id,
+			url: '/api/favorites/' + values.isbn,
 			data: values
 		})
 	}
@@ -33,7 +33,7 @@ angular.module('bookApp').service('mainServ', function($http) {
 	this.deleteFav = function(values) {
 		return $http({
 			method: 'DELETE',
-			url: '/api/favorites/' + values.id,
+			url: '/api/favorites/' + values.isbn,
 			data: values
 		})
 	}

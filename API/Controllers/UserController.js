@@ -12,12 +12,18 @@ module.exports.showUser = function(req, res, next) {
 	var username = req.params.user;
 	gr.showUser(username, function(json) {
       	var data = userService.getData(json)
-      	var shelfOptions = {
-      		"userID": json.GoodreadsResponse.user[0].id[0],
-      		"shelf": json.GoodreadsResponse.user[0].user_shelves[0].user_shelf[0].name[0],
-      		"page": 1, 
-      		"per_page": 20
-      	}
+            var shelfOptions = []
+            // console.log(16, data)
+            for (var i = 1; i < data.length; i++) {
+                  // console.log("HEY LISTEN!!!", data[0])
+                  shelfOptions[i - 1] = { 
+            		"userID": data[0].id,
+            		"shelf": data[i].shelfName,
+            		"page": 1, 
+            		"per_page": 50
+                  }      
+            }      
+            // console.log("shelf options", shelfOptions)
       	req.body = shelfOptions;
       	req.user = data;
 			next()
