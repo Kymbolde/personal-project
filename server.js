@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static(__dirname))
 
-var massiveUri = 'postgres://localhost:5432/book_app';
+var massiveUri = 'postgres://postgres:@localhost/book_app';
 var massiveServer = massive.connectSync({
 	connectionString: massiveUri
 });
